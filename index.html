@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eat Sushi × SŌSA — Maquettes de présentation</title>
+<style>
+  @font-face {
+    font-family: "UberMove";
+    src: url("images/image-ubereats/fonts/14f73a3f74611002.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "UberMoveText";
+    src: url("images/image-ubereats/fonts/276edd4275dda838.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "UberMoveText";
+    src: url("images/image-ubereats/fonts/eee1724e2e5a8ebd.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: #ffffff;
+    color: #1b1a16;
+    font-family: "UberMoveText", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    min-height: 100dvh;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(242, 232, 216, 0.55) 0%, transparent 70%),
+      #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 48px;
+  }
+
+  .header {
+    text-align: center;
+    max-width: 660px;
+    margin-bottom: 36px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #f5f2ea;
+    border: 1px solid #e5decb;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b6b3a;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .title {
+    margin: 0;
+    font-family: "UberMove", "UberMoveText", sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #1b1a16;
+  }
+  .title span { color: #9ca63e; }
+
+  .grid {
+    width: 100%;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: #ffffff;
+    border: 1px solid #e7e4de;
+    border-radius: 22px;
+    overflow: hidden;
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.24s ease, box-shadow 0.24s ease;
+    box-shadow: 0 12px 34px rgba(27, 26, 22, 0.06);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: #cfc8bc;
+    box-shadow: 0 22px 48px rgba(27, 26, 22, 0.11);
+  }
+
+  .preview {
+    position: relative;
+    height: 270px;
+    background: #f2e8d8;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Preview 1: Eat Sushi Site Panier */
+  .preview--eatsushi {
+    background: linear-gradient(180deg, #f2e8d8 0%, #eae0ce 100%);
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .es-topbar {
+    width: 100%;
+    height: 44px;
+    background: #9ca63e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .es-upsell-preview {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px 18px;
+  }
+  .es-upsell-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: #828b31;
+    letter-spacing: 0.01em;
+  }
+  .es-tubes {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .es-tube-card {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 10px 10px 12px;
+    box-shadow: 0 6px 18px rgba(27, 26, 22, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.24s ease;
+  }
+  .card:hover .es-tube-card:nth-child(odd) { transform: translateY(-3px); }
+  .card:hover .es-tube-card:nth-child(even) { transform: translateY(3px); }
+  .es-tube-card img {
+    width: 94px;
+    height: 94px;
+    object-fit: cover;
+    object-position: center 45%;
+    background: #f8f4f0;
+    border-radius: 8px;
+    display: block;
+  }
+  .es-tube-meta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #1b1a16;
+  }
+  .es-tube-price {
+    color: #828b31;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* Preview 2: Uber Eats Mobile */
+  .preview--ubereats {
+    background: radial-gradient(circle at 50% 40%, #262b36 0%, #14171f 100%);
+    padding: 22px 20px 0;
+    align-items: flex-end;
+  }
+  .mini-phone {
+    width: 210px;
+    height: 248px;
+    border-radius: 30px 30px 0 0;
+    padding: 8px 8px 0;
+    background: linear-gradient(145deg, #6d6b65, #3a3936);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card:hover .mini-phone { transform: translateY(-6px); }
+  .mini-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 23px 23px 0 0;
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    color: #111111;
+  }
+  .mini-notch-bar {
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mini-island { width: 56px; height: 14px; border-radius: 999px; background: #111111; }
+  .mini-ue-hdr {
+    padding: 4px 12px 8px;
+    border-bottom: 1px solid #efefef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mini-ue-hdr img { height: 13px; width: auto; display: block; }
+  .mini-ue-pill {
+    background: #06c167;
+    color: #052213;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 999px;
+  }
+  .mini-ue-list {
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mini-ue-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .mini-ue-name { font-size: 10px; font-weight: 600; line-height: 1.25; color: #111; }
+  .mini-ue-price { font-size: 9.5px; color: #545454; margin-top: 2px; }
+  .mini-ue-thumb {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: #f8f4f0;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .mini-ue-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  .card-body {
+    padding: 24px 26px 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card-tag {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .card-tag--es { background: #f3f5e4; color: #6c7524; }
+  .card-tag--ue { background: rgba(6, 193, 103, 0.12); color: #058a48; }
+  .card-title {
+    margin: 0 0 20px;
+    font-family: "UberMove", "UberMoveText", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: #1b1a16;
+  }
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.18s ease;
+  }
+  .card-cta--es { background: #9ca63e; color: #ffffff; }
+  .card:hover .card-cta--es { background: #899234; }
+  .card-cta--ue { background: #06c167; color: #ffffff; }
+  .card:hover .card-cta--ue { background: #05ad5c; }
+
+  .footer {
+    margin-top: 30px;
+    font-size: 12.5px;
+    color: #938e86;
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    .page { padding: 28px 16px 36px; justify-content: flex-start; }
+    .header { margin-bottom: 26px; }
+    .grid { grid-template-columns: 1fr; gap: 18px; }
+    .preview { height: 220px; }
+    .mini-phone { height: 202px; }
+    .card-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="eyebrow">Présentation Produit · Gamme Tubes 30 ml</div>
+      <h1 class="title">Eat Sushi <span>×</span> SŌSA</h1>
+    </header>
+
+    <section class="grid">
+      <a class="card" href="eatsushi.html">
+        <div class="preview preview--eatsushi">
+          <div class="es-topbar">
+            <span>EAT SUSHI</span>
+            <span style="opacity:.9;">Panier</span>
+          </div>
+          <div class="es-upsell-preview">
+            <div class="es-upsell-heading">Laissez vous tenter…</div>
+            <div class="es-tubes">
+              <div class="es-tube-card">
+                <img src="images/image-sosa-site/sosa-hot-soja-card.webp" alt="SŌSA Sauce Soja Sucrée Pimentée">
+                <div class="es-tube-meta">
+                  <span>Sucrée Pimentée</span>
+                  <span class="es-tube-price">1,99 €</span>
+                </div>
+              </div>
+              <div class="es-tube-card">
+                <img src="images/image-sosa-site/sosa-smoked-card.webp" alt="SŌSA Sauce Soja Salée Fumée">
+                <div class="es-tube-meta">
+                  <span>Salée Fumée</span>
+                  <span class="es-tube-price">1,99 €</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-tag card-tag--es">Site Web · Panier</span>
+          <h2 class="card-title">Maquette Eat Sushi</h2>
+          <div class="card-cta card-cta--es">
+            <span>Ouvrir la maquette Eat Sushi</span>
+            <span>→</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="card" href="index-mobile.html">
+        <div class="preview preview--ubereats">
+          <div class="mini-phone">
+            <div class="mini-screen">
+              <div class="mini-notch-bar"><div class="mini-island"></div></div>
+              <div class="mini-ue-hdr">
+                <img src="images/image-ubereats/97c43f8974e6c876.svg" alt="Uber Eats">
+                <span class="mini-ue-pill">Mobile</span>
+              </div>
+              <div class="mini-ue-list">
+                <div class="mini-ue-row">
+                  <div>
+                    <div class="mini-ue-name">SŌSA Sauce Soja Sucrée Pimentée</div>
+                    <div class="mini-ue-price">1,99 €</div>
+                  </div>
+                  <div class="mini-ue-thumb"><img src="images/image-sosa-site/sosa-hot-soja.webp" alt=""></div>
+                </div>
+                <div class="mini-ue-row">
+                  <div>
+                    <div class="mini-ue-name">SŌSA Sauce Soja Sucrée Gingembre Yuzu</div>
+                    <div class="mini-ue-price">1,99 €</div>
+                  </div>
+                  <div class="mini-ue-thumb"><img src="images/image-sosa-site/sosa-ginger.webp" alt=""></div>
+                </div>
+                <div class="mini-ue-row" style="border:0;">
+                  <div>
+                    <div class="mini-ue-name">SŌSA Sauce Soja Salée Originale</div>
+                    <div class="mini-ue-price">1,99 €</div>
+                  </div>
+                  <div class="mini-ue-thumb"><img src="images/image-sosa-site/sosa-original-sale.webp" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="card-tag card-tag--ue">Application Mobile · iPhone</span>
+          <h2 class="card-title">Maquette Uber Eats</h2>
+          <div class="card-cta card-cta--ue">
+            <span>Ouvrir la maquette Uber Eats</span>
+            <span>→</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <footer class="footer">Prototype SŌSA · Usage de présentation interne</footer>
+  </main>
+</body>
+</html>
